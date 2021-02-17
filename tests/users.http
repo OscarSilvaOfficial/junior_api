@@ -1,0 +1,41 @@
+GET http://127.0.0.1:8000/users HTTP/1.1
+Authorization: Basic oscar:admin
+
+###
+
+GET http://127.0.0.1:8000/users/1/posts HTTP/1.1
+Authorization: Basic oscar:admin
+
+###
+
+DELETE http://127.0.0.1:8000/users/1/ HTTP/1.1
+Authorization: Basic oscar:admin
+###
+
+PATCH http://127.0.0.1:8000/users/1/ HTTP/1.1
+content-type: application/json
+Authorization: Basic oscar:admin
+
+{
+  "username": "oscar",
+  "first_name": "Oscar",
+  "password": "admin",
+  "last_name": "Silva",
+  "email": "oscarkaka222@gmail.com"
+}
+
+###
+
+POST http://127.0.0.1:8000/users/ HTTP/1.1
+content-type: application/json
+Authorization: Basic oscar:admin
+
+{
+  "username": "admiunskidfgrskjssn",
+  "password": "Kaka25780",
+  "first_name": "Oscar",
+  "last_name": "Silva",
+  "email": "oscarkaka222@gmail.com"
+}
+
+###
