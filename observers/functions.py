@@ -1,5 +1,5 @@
 import requests, logging
-from junior_api.settings import SAND_MAIL_API
+from core.settings import SAND_MAIL_API
 
 def create_email(request, subject, content):
   payload = {

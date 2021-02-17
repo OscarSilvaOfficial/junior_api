@@ -1,6 +1,10 @@
 {
   "python.pythonPath": "/home/oscar/anaconda3/envs/develop/bin/python",
+  "material-icon-theme.folders.associations": {
+    "observers": "../../../../../icons/folder-eye"
+  },
   "cSpell.words": [
     "enviado"
-  ]
+  ],
+  "cSpell.language": "en,pt-BR"
 }

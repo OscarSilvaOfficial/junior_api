@@ -2,13 +2,15 @@ from pathlib import Path
 import os
 
 BASE_DIR = Path(__file__).resolve().parent.parent
-SECRET_KEY = os.environ['SECRET_KEY']
 EMAIL_KEY = os.environ['EMAIL_PASS']
 DEBUG = True
 ALLOWED_HOSTS = []
 
 if DEBUG:
     SAND_MAIL_API = 'http://localhost:5001/send_mail'
+    SECRET_KEY = 'kfjdbakljsdhflkjahsdfhlkasj)dsd!@#deflha'
+else:
+    SECRET_KEY = os.environ['SECRET_KEY']
     
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -18,8 +20,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
-    'apps.app_users',
-    'apps.app_posts',
+    'apps.users',
+    'apps.posts',
 ]
 
 MIDDLEWARE = [
@@ -32,7 +34,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'junior_api.urls'
+ROOT_URLCONF = 'core.urls'
 
 TEMPLATES = [
     {
@@ -50,7 +52,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'junior_api.wsgi.application'
+WSGI_APPLICATION = 'core.wsgi.application'
 
 DATABASES = {
     'default': {

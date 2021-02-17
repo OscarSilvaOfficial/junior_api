@@ -2,7 +2,9 @@ from rest_framework import viewsets, generics
 from rest_framework.authentication import BasicAuthentication
 from rest_framework.permissions import IsAuthenticated
 from django.contrib.auth.models import User
-from apps.app_posts.models import Posts
+from apps.posts.models import Posts
+from rest_framework import status
+from rest_framework.response import Response
 from observers.functions import create_email
 from .serializer import UsersSerializer, UserPostsSerializer
 from rest_framework.mixins import CreateModelMixin as create_mixin, UpdateModelMixin as update_mixin
@@ -23,7 +25,7 @@ class UsersViewSet(viewsets.ModelViewSet):
         'Opa, seu cadastro foi atualizado',
         'estamos aqui para informar que seu usuario foi atualizado'
       )
-      return response
+      return Response(response, status=status.HTTP_201_CREATED)
 
     def create(self, request, *args, **kwargs):
       response = create_mixin.create(self, request, *args, **kwargs)
@@ -32,7 +34,7 @@ class UsersViewSet(viewsets.ModelViewSet):
         'Seja muito bem vindo',
         'estamos muito felizes de estar com voce'
       )
-      return response
+      return Response(response, status=status.HTTP_201_CREATED)
 
 
 class UserPosts(generics.ListAPIView):
