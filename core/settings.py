@@ -3,8 +3,8 @@ import os
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 EMAIL_KEY = os.environ['EMAIL_PASS']
-DEBUG = os.environ['DEBUG']
-ALLOWED_HOSTS = []
+DEBUG = bool(os.environ['DEBUG'])
+ALLOWED_HOSTS = ['*']
 
 if DEBUG:
     SAND_MAIL_API = 'http://localhost:5001/send_mail'
@@ -14,7 +14,7 @@ else:
     django_heroku.settings(locals())
     SECRET_KEY = os.environ['SECRET_KEY']
     SAND_MAIL_API = 'http://localhost:5001/send_mail'
-    
+
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
