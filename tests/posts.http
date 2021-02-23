@@ -1,5 +1,6 @@
 POST http://127.0.0.1:8000/posts/ HTTP/1.1
 content-type: application/json
+Authorization: Basic admin:admin
 
 {
     "title": "Meu titulo",
@@ -18,3 +19,15 @@ GET http://127.0.0.1:8000/posts HTTP/1.1
 DELETE http://127.0.0.1:8000/posts/2/ HTTP/1.1
 
 ###
+
+PATCH http://127.0.0.1:8000/posts/1/ HTTP/1.1
+content-type: application/json
+Authorization: Basic admin:admin
+
+{
+    "title": "Meu titulo",
+    "content": "sdss",
+    "date": "2021-02-20",
+    "tags": "@seiLa",
+    "user_id": 1
+}

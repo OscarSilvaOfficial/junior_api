@@ -3,14 +3,17 @@ import os
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 EMAIL_KEY = os.environ['EMAIL_PASS']
-DEBUG = True
+DEBUG = os.environ['DEBUG']
 ALLOWED_HOSTS = []
 
 if DEBUG:
     SAND_MAIL_API = 'http://localhost:5001/send_mail'
     SECRET_KEY = 'kfjdbakljsdhflkjahsdfhlkasj)dsd!@#deflha'
 else:
+    import django_heroku
+    django_heroku.settings(locals())
     SECRET_KEY = os.environ['SECRET_KEY']
+    SAND_MAIL_API = 'http://localhost:5001/send_mail'
     
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -19,6 +22,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'corsheaders',
     'rest_framework',
     'apps.users',
     'apps.posts',
@@ -29,6 +33,8 @@ MIDDLEWARE = [
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
+    'django.middleware.common.CommonMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
@@ -87,3 +93,8 @@ USE_L10N = True
 USE_TZ = True
 
 STATIC_URL = '/static/'
+
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:3000",
+    "https://junior-web.vercel.app",
+]

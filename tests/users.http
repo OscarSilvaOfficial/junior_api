@@ -14,10 +14,10 @@ Authorization: Basic oscar:admin
 
 PATCH http://127.0.0.1:8000/users/1/ HTTP/1.1
 content-type: application/json
-Authorization: Basic oscar:admin
+Authorization: Basic admin:admin
 
 {
-  "username": "oscar",
+  "username": "admin",
   "first_name": "Oscar",
   "password": "admin",
   "last_name": "Silva",
