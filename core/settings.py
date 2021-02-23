@@ -98,3 +98,5 @@ CORS_ALLOWED_ORIGINS = [
     "http://localhost:3000",
     "https://junior-web.vercel.app",
 ]
+
+DISABLE_COLLECTSTATIC=1
