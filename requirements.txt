@@ -3,3 +3,4 @@ djangorestframework==3.12.2
 markdown==3.3.3
 django-heroku==0.3.1
 gunicorn==19.9.0
+django-cors-headers==3.7.0
