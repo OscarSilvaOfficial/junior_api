@@ -97,4 +97,5 @@ STATIC_URL = '/static/'
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:3000",
     "https://junior-web.vercel.app",
+    "https://junior-web-git-master-oscarsilvaofficial.vercel.app/"
 ]
