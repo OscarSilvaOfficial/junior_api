@@ -1,19 +1,22 @@
 from pathlib import Path
-import os
+from decouple import config
+
 
 BASE_DIR = Path(__file__).resolve().parent.parent
-EMAIL_KEY = os.environ['EMAIL_PASS']
-DEBUG = bool(os.environ['DEBUG'])
+
+EMAIL_KEY = config('EMAIL_PASS')
+
+DEBUG = config('DEBUG')
+
 ALLOWED_HOSTS = ['*']
 
-if DEBUG:
-    SAND_MAIL_API = 'http://localhost:5001/send_mail'
-    SECRET_KEY = 'kfjdbakljsdhflkjahsdfhlkasj)dsd!@#deflha'
-else:
+SECRET_KEY = config('SECRET_KEY')
+
+SAND_MAIL_API = config('EMAIL_API')
+
+if DEBUG == False:
     import django_heroku
-    django_heroku.settings(locals())
-    SECRET_KEY = os.environ['SECRET_KEY']
-    SAND_MAIL_API = 'http://localhost:5001/send_mail'
+    django_heroku.settings(locals())    
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -96,8 +99,8 @@ STATIC_URL = '/static/'
 
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:3000",
+    'https://junior-web.vercel.app',
     'https://junior-web-b5yivsfls-oscarsilvaofficial.vercel.app',
-    'https://junior-web-oscarsilvaofficial.vercel.app/'
-    "https://junior-web.vercel.app",
-    "https://junior-web-git-master-oscarsilvaofficial.vercel.app/"
+    'https://junior-web-oscarsilvaofficial.vercel.app',
+    "https://junior-web-git-master-oscarsilvaofficial.vercel.app"
 ]
