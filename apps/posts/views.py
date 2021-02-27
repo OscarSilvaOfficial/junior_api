@@ -12,4 +12,3 @@ class PostsViewSet(viewsets.ModelViewSet):
   authentication_classes = [BasicAuthentication]
   permission_classes = [IsAuthenticated]
   
-
